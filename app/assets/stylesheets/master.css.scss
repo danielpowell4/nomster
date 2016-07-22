@@ -23,6 +23,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom:15px;
   padding: 20px;
 }
+.center-flex-containter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .navbar.navbar-inverse {
   background:url('/assets/cartographer.png');
