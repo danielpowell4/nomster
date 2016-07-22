@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 #for server startup temp fix
 gem 'sprockets', '3.6.3'
 
+gem 'simple_form'
+
 #for lazygrids and components
 gem 'bootstrap-sass', '~> 3.3.6'
 
