@@ -1,14 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'https://fonts.googleapis.com/css?family=Arvo';
 
 body {
   background: url('/assets/crossword.png');
-  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+  font-family: 'Arvo', sans-serif;
 }
-.navbar.navbar-inverse {
-  background:url('/assets/cartographer.png');
-  border-radius: 0;
-  box-shadow: 0px 1px 3px #2a2a2a;
+
+h1, h2, h3, h4, h5, h6 {
+  margin:0;
+  padding:0;
 }
 
 .booyah-box {
@@ -23,7 +24,15 @@ body {
   padding: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin:0;
-  padding:0;
+.navbar.navbar-inverse {
+  background:url('/assets/cartographer.png');
+  border-radius: 0;
+  box-shadow: 0px 1px 3px #2a2a2a;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #E3E85A;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
