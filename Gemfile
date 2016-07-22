@@ -30,17 +30,20 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#for server startup temp fix
+# for server startup temp fix
 gem 'sprockets', '3.6.3'
 
 gem 'simple_form'
 
-#for lazygrids and components
+#f or lazygrids and components
 gem 'bootstrap-sass', '~> 3.3.6'
 
-#pagination
+# pagination
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
+
+# grabbing all those users
+gem 'devise', '~> 4.2'
 
 #for Heroku ease
 gem 'rails_12factor', group: :production
