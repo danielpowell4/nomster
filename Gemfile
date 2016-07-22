@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.5'
 #for server startup temp fix
 gem 'sprockets', '3.6.3'
 
+#for lazygrids and components
+gem 'bootstrap-sass', '~> 3.3.5.1'
+
 #for Heroku ease
 gem 'rails_12factor', group: :production
 
