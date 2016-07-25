@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-   before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     @places = Place.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 7)
@@ -20,12 +20,21 @@ class PlacesController < ApplicationController
 
   def edit
     @place = Place.find(params[:id])
+
+    if @place.user != current_user
+      return render text: 'Oh No! Only the user who created a place is able to update it.', status: :forbidden
+    end
   end
 
   def update
     @place = Place.find(params[:id])
+
+    if @place.user != current_user
+      return render text: 'Oh No! Only the user who created a place is able to update it.', status: :forbidden
+    end
+
     @place.update_attributes(place_params)
-    redirect_to place_path(@place)
+    redirect_to root_path
   end
 
   def destroy
