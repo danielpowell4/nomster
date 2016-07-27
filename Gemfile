@@ -45,6 +45,12 @@ gem 'will_paginate-bootstrap'
 # grabbing all those users
 gem 'devise', '~> 4.2'
 
+# geocoding the address
+gem 'geocoder', '1.3.4'
+
+#for storing local ENV vars
+gem "figaro", ">= 1.0.0"
+
 #for Heroku ease
 gem 'rails_12factor', group: :production
 
