@@ -13,7 +13,12 @@ h1, h2, h3, h4, h5, h6 {
 .alert {
     width: 100%;
     max-width: 660px;
-    margin: 0 auto 2rem;
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 6rem
 }
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
