@@ -26,6 +26,23 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom:15px;
   padding: 20px;
 }
+.carousel {
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    max-height: 90vh;
+    width: 100%;
+}
+.carousel-caption {
+    font-family: 'Arvo', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 4rem;
+    font-weight:lighter;
+    text-shadow: rgba(0,0,0,0.95) 2px 2px;
+    background-color: rgba(0,0,0,0.5);
+    width:100%;
+    position:absolute;
+    left:0;
+}
 .center-flex-containter{
   display: flex;
   justify-content: center;
@@ -57,6 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   background:url('/assets/cartographer.png');
   border-radius: 0;
   box-shadow: 0px 1px 3px #2a2a2a;
+  margin-bottom:0;
 }
 .navbar-inverse .navbar-brand {
   color: #E3E85A;
