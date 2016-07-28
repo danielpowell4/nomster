@@ -48,7 +48,7 @@
   <br/>
   <h2>Comments</h2>
   <br/>
-  <% if @place.comments.any? %>
+  <% if @place.comments.present? %>
     <% @place.comments.each do |comment| %>
       <div>
         <blockquote>
