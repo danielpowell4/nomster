@@ -30,7 +30,6 @@
     <div id="map"></div>
 
   <% end %>
-
   <br/>
 
   <div class="pull-right">
@@ -44,11 +43,12 @@
 
 <div class="clear"></div>
 
-<div class="col-xs-6 col-xs-offset-3">
-  <br/>
-  <h2>Comments</h2>
-  <br/>
-  <% if @place.comments.present? %>
+<% if @place.comments.present? %>
+  <div class="col-xs-6 col-xs-offset-3">
+    <br/>
+    <h2>Comments</h2>
+    <br/>
+
     <% @place.comments.each do |comment| %>
       <div>
         <blockquote>
@@ -60,20 +60,57 @@
         </blockquote>
       </div>
     <% end %>
+
+    <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#commentModal">
+        Add a Comment!
+    </button>
+
+  </div>
+<% end %>
+
+<%if @place.photos.any? %>
+<div class="photos-container booyah-box col-xs-6 col-xs-offset-3">
+  <h2>   Photos of <%= @place.name %></h2>
+  <% @place.photos.each do |photo| %>
+    <br/>
+    <div class="photo">
+      <%= image_tag photo.picture, :class => 'img-responsive' %>
+      <br/>
+      <h5> -- <%= photo.caption %></h5>
+      <h6> Sumbitted by <%= photo.user.email %></h6>
+      <br/>
+    </div>
   <% end %>
-
-  <!-- Button trigger modal -->
-  <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#myModal">
-    Add a Comment!
+  <button class="btn btn-success btn-lg center" data-toggle="modal" data-target="#photoModal">
+    Add a Photo!
   </button>
+</div>
+<% end %>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%if @place.comments.none? | @place.photos.none? %>
+  <div class="buttons-container col-xs-8 col-xs-offset-2">
+    <%if @place.comments.none? %>
+      <!-- Button trigger comment modal -->
+      <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#commentModal">
+        Add a Comment!
+      </button>
+    <% end %>
+    <%if @place.photos.none? %>
+      <!-- Button trigger Photo modal -->
+      <button class="btn btn-success btn-lg center" data-toggle="modal" data-target="#photoModal">
+        Add a Photo!
+      </button>
+    <% end %>
+  </div>
+<% end %>
+
+  <!-- Comment Modal -->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
+          <h4 class="modal-title" id="commentModalLabel">Add a comment</h4>
         </div>
         <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
          <div class="modal-body">
@@ -89,5 +126,26 @@
     </div>
   </div>
 
-</div>
+  <!-- Photo Modal -->
+  <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="photoModalLabel">Add a Photo</h4>
+        </div>
+        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+         <div class="modal-body">
+           <%= f.file_field :picture %>
+           <%= f.input :caption %>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+         </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
+
 <br/><br/>

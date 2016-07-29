@@ -1,6 +1,8 @@
 class Place < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :photos
+
   geocoded_by :address
   after_validation :geocode
 
@@ -17,7 +19,5 @@ class Place < ApplicationRecord
     minimum: 3,
     too_long: "%{count} characters is the maximum number of characters allowed",
     too_short: "Must be at least %{count} characters long" }
-
-
 
 end
