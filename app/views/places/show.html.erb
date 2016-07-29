@@ -37,12 +37,12 @@
       <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
       <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'},class: 'btn btn-danger' %>
     <% end %>
-      <%if @place.photos.none? %>
+      <%if @place.photos.none? & current_user %>
         <button class="btn btn-success btn-lg center" data-toggle="modal" data-target="#photoModal">
           Add a Photo!
       </button>
     <% end %>
-    <%if @place.comments.none? %>
+    <%if @place.comments.none? & current_user %>
       <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#commentModal">
         Add a Comment!
       </button>
@@ -71,9 +71,11 @@
       </div>
     <% end %>
 
-    <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#commentModal">
-        Add a Comment!
-    </button>
+    <%if current_user %>
+      <button class="btn btn-primary btn-lg center" data-toggle="modal" data-target="#commentModal">
+          Add a Comment!
+      </button>
+    <% end %>
 
   </div>
 <% end %>
@@ -91,9 +93,12 @@
       <br/>
     </div>
   <% end %>
-  <button class="btn btn-success btn-lg center" data-toggle="modal" data-target="#photoModal">
-    Add a Photo!
-  </button>
+  <%if current_user %>
+    <button class="btn btn-success btn-lg center" data-toggle="modal" data-target="#photoModal">
+      Add a Photo!
+    </button>
+  <% end %>
+
 </div>
 <% end %>
 
